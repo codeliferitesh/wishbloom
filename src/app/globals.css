@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-petal: #FFF0F3;
+    --color-blush: #FFD6DF;
+    --color-rose: #E8748A;
+    --color-rose-deep: #C2486A;
+    --color-gold: #D4A853;
+    --color-gold-light: #F5DFA0;
+    --color-ink: #1C1218;
+    --color-ink-soft: #4A3A44;
+    --color-fog: #F7F0F2;
+    --color-white: #FFFBFC;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-white);
+    color: var(--color-ink);
+    min-height: 100vh;
+  }
+
+  ::selection {
+    background: var(--color-blush);
+    color: var(--color-rose-deep);
+  }
+}
+
+@layer components {
+  /* Reusable input style */
+  .input-field {
+    @apply w-full px-4 py-3 rounded-xl border border-pink-200 bg-white/80
+           text-[--color-ink] placeholder:text-pink-300
+           focus:outline-none focus:ring-2 focus:ring-[--color-rose] focus:border-transparent
+           transition-all duration-200 font-body text-sm;
+  }
+
+  /* Primary CTA button */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2
+           px-6 py-3 rounded-xl font-semibold text-sm text-white
+           bg-[--color-rose] hover:bg-[--color-rose-deep]
+           transition-all duration-200 active:scale-95
+           disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100
+           shadow-md hover:shadow-lg;
+  }
+
+  /* Ghost button */
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2
+           px-6 py-3 rounded-xl font-semibold text-sm
+           text-[--color-rose] border border-pink-200 bg-white
+           hover:bg-pink-50 transition-all duration-200 active:scale-95;
+  }
+
+  /* Card container */
+  .card {
+    @apply bg-white rounded-2xl border border-pink-100 shadow-sm;
+  }
+
+  /* Page header with gradient */
+  .page-gradient {
+    background: linear-gradient(135deg, var(--color-petal) 0%, #fff 60%);
+  }
+}
+
+@layer utilities {
+  /* Text gradient */
+  .text-gradient {
+    background: linear-gradient(135deg, var(--color-rose) 0%, var(--color-gold) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Soft shadow for floating elements */
+  .shadow-petal {
+    box-shadow: 0 8px 32px rgba(232, 116, 138, 0.15);
+  }
+
+  /* Background noise texture for depth */
+  .bg-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  }
+}
+
+/* Stagger animation delays for lists */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+
+/* Opacity starts hidden for fade-in animations */
+.animate-fade-up {
+  opacity: 0;
+}
